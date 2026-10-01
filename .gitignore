@@ -1,0 +1,27 @@
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+
+# Editor and operating system files
+.idea/
+.vscode/
+.vs/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+
+# Local analysis inputs and generated artifacts
+/data/local/
+/data/generated/
+/reports/generated/
+/logs/
+/tmp/
+*.log
+
+# Add language-specific rules after the technology stack is selected.
