@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ImpactTrace · 产品原型</title>
+  <link rel="stylesheet" href="prototype.css">
+  <link rel="stylesheet" href="graph-view.css">
+  <script src="graph-data.js" defer></script>
+  <script src="graph-view.js" defer></script>
+  <script src="prototype.js" defer></script>
+</head>
+<body>
+  <div class="preview-bar">
+    <span><strong>交互原型 v0.2</strong><span class="preview-note"> · 固定样例，刷新重置；不连接后端或模型</span> · <a href="review.html">打开仓库审阅 v0.3</a></span>
+    <div class="preview-controls">
+      <label>预览角色 <select id="role"><option value="developer">开发者</option><option value="reviewer">审核者</option></select></label>
+      <label>报告情形 <select id="scenario"><option value="normal">完整示例</option><option value="model-failed">模型不可用</option><option value="partial">部分解析</option><option value="empty">无变更</option></select></label>
+    </div>
+  </div>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="#overview" class="brand"><span class="brand-icon">it</span><span>ImpactTrace<small>读懂代码，也读懂改变</small></span></a>
+      <div class="project-label">当前项目</div><div class="project-chip"><span class="project-avatar">T</span><span><strong>TinyDB</strong><small>Python · 本地仓库</small></span></div>
+      <nav aria-label="主导航">
+        <a href="#overview" data-nav="overview"><span>◫</span>项目概览</a>
+        <a href="#new" data-nav="new"><span>＋</span>新建分析</a>
+        <a href="#report" data-nav="report"><span>↗</span>分析报告</a>
+        <a href="#history" data-nav="history"><span>◷</span>历史记录</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="avatar" id="avatar">D</span><div><strong id="role-name">开发者</strong><small>本机演示工作区</small></div></div>
+    </aside>
+    <main id="main" tabindex="-1"></main>
+  </div>
+  <dialog id="evidence-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div><form method="dialog"><button class="button secondary">关闭</button></form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
