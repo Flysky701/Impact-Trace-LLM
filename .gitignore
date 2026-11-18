@@ -24,4 +24,17 @@ Desktop.ini
 /tmp/
 *.log
 
-# Add language-specific rules after the technology stack is selected.
+# Python and frontend outputs
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+.coverage*
+htmlcov/
+coverage.xml
+node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/test-results/
+*.tsbuildinfo

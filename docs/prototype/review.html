@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TinyDB · 变更审阅 · ImpactTrace</title>
+  <link rel="stylesheet" href="review.css">
+  <script src="graph-data.js" defer></script>
+  <script src="review-data.js" defer></script>
+  <script src="review-activity.js" defer></script>
+  <script src="review.js" defer></script>
+</head>
+<body>
+  <div class="prototype-note">设计预览 v0.4 · TinyDB 真实提交；活动与流程为人工整理，审核刷新重置。<a href="index.html">旧版原型</a></div>
+  <header class="repo-header"><div class="repo-name"><span class="brand">ImpactTrace</span><span class="slash">/</span><strong>msiemens / tinydb</strong><span class="badge">本地仓库</span></div><button id="review-open" class="primary">提交审阅</button></header>
+  <nav class="repo-nav" aria-label="仓库导航"><button data-page="code">代码</button><button data-page="architecture">架构</button><button data-page="compare" class="active">比较</button><button data-page="checks">检查</button><button data-page="reviews">审阅记录 <span id="review-count">0</span></button></nav>
+  <main>
+    <div class="comparison-head"><div><h1>跳过不存在的文档 ID</h1><p>历史提交 · <code>tinydb/table.py</code> · update、remove、upsert</p></div><div class="diff-count"><span>3 个文件</span><b class="added">+95</b><b class="removed">−20</b></div></div>
+    <div class="revision-bar"><span>基准 <code>8a2dc20</code></span><span aria-hidden="true">→</span><span>目标 <code>76d21d2</code></span><span class="revision-mode">两个提交直接比较</span><a href="https://github.com/msiemens/tinydb/compare/8a2dc204c265c07ce8506a3599a28e720b6dcdd7..76d21d26c682e1ca6ca25bd8e81edf9f609ac52f" target="_blank" rel="noreferrer">查看提交差异 ↗</a></div>
+    <div id="workspace"></div>
+  </main>
+  <dialog id="review-dialog" aria-labelledby="review-title"><form id="review-form"><h2 id="review-title">提交审阅</h2><p class="muted">当前固定提交 · 仅保存在本次预览中</p><label>结论<select name="decision"><option>需补充</option><option>已审核</option></select></label><label>意见<textarea name="note" required rows="4" placeholder="说明需要检查的位置和原因"></textarea></label><p class="muted">测试状态：未执行。此原型不会运行仓库测试。</p><div class="dialog-actions"><button type="button" id="review-close">取消</button><button class="primary" type="submit">保存审阅</button></div></form></dialog>
+  <div id="announce" role="status" aria-live="polite" class="sr-only"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "LimingjieDesktop",
+  "description": "桌面生产源码 + 实际复用的 Android 源码；测试单独统计。",
+  "sourceRoots": [
+    {"path": "desktop/app/src/main/kotlin", "module": "app"},
+    {"path": "desktop/shared/src/main/kotlin", "module": "shared"},
+    {"path": "desktop/device/src/main/kotlin", "module": "device"},
+    {"path": "desktop/ocr/src/main/kotlin", "module": "ocr"},
+    {"path": "desktop/platform/src/main/kotlin", "module": "platform"},
+    {"path": "android/app/src/main/java", "module": "shared", "origin": "upstream", "excludesFile": "desktop/shared/upstream-excludes.txt", "derivedFile": "desktop/shared/upstream-derived.txt"},
+    {"path": "desktop/app/src/test/kotlin", "module": "app", "test": true},
+    {"path": "desktop/shared/src/test/kotlin", "module": "shared", "test": true},
+    {"path": "desktop/device/src/test/kotlin", "module": "device", "test": true},
+    {"path": "desktop/ocr/src/test/kotlin", "module": "ocr", "test": true},
+    {"path": "desktop/platform/src/test/kotlin", "module": "platform", "test": true},
+    {"path": "android/app/src/test/java", "module": "shared", "origin": "upstream", "test": true, "excludesFile": "desktop/shared/upstream-test-excludes.txt", "derivedFile": "desktop/shared/upstream-test-derived.txt"}
+  ],
+  "buildFiles": ["desktop/app/build.gradle.kts", "desktop/shared/build.gradle.kts", "desktop/device/build.gradle.kts", "desktop/ocr/build.gradle.kts", "desktop/platform/build.gradle.kts"],
+  "flows": ["prepareSharedAccount", "bindSharedProjection", "clearSharedBinding", "startLabyrinthAutoRun", "stopAll", "shutdown"],
+  "moduleLabels": {"app": "界面 · 总控 · 设备进程", "shared": "共享业务 · 桌面适配 · Room", "device": "ADB · 截图 · 输入守卫", "ocr": "ONNX · 图像识别", "platform": "进程 · DPAPI · 本机存储"},
+  "defaultFunction": "prepareSharedAccount",
+  "scenario": {
+    "title": "为设备准备共享账号",
+    "description": "人工核对的功能分组，依据 prepareSharedAccount 源码；点击进入自动提取的活动图。这里展示一次正常调用，失败和取消边界在函数图与源码中查看。",
+    "function": "prepareSharedAccount",
+    "beforeOrder": [0, 2, 1, 3, 4],
+    "afterOrder": [0, 1, 2, 3, 4],
+    "steps": [
+      {"label": "读取共享账号快照", "contains": ["taskData("]},
+      {"label": "同步账号投影", "contains": ["bindSharedProjection(", "getById(accountId)", "AccountEntity(", "selectAccount(accountId)", "insert(row)"]},
+      {"label": "更新凭据与会话", "contains": ["credentialStore.save(", "cachedMaterial = material", "sessionStore.delete("]},
+      {"label": "同步设置并等待就绪", "contains": ["settings.save(", "withTimeout(", "labyrinthController.saveSettings("]},
+      {"label": "保存策略并返回", "contains": ["labyrinthStrategySettings.save(", "return snapshot"]}
+    ]
+  }
+}
